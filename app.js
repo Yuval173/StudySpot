@@ -16,8 +16,18 @@ app.get('/', (req, res) => {
     endpoints: [
       'GET /api/rooms',
       'GET /api/rooms/available',
+      'GET /api/rooms/search',
+      'GET /api/rooms/:id',
+      'POST /api/rooms',
+      'PUT /api/rooms/:id',
+      'DELETE /api/rooms/:id',
       'GET /api/buildings',
       'GET /api/buildings/summary',
+      'GET /api/buildings/search',
+      'GET /api/buildings/:id',
+      'POST /api/buildings',
+      'PUT /api/buildings/:id',
+      'DELETE /api/buildings/:id',
     ],
   });
 });
