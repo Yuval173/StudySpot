@@ -2,7 +2,7 @@
 
 REST API for StudySpot, a web app for booking study rooms on campus.
 Exercise 1: Express server with two entities (Rooms, Buildings) returning static JSON.
-Exercise 2: Added controllers - each route calls a controller function (get all, get by id, search, add, update, delete).
+Exercise 2: Added controllers - each route calls a controller function (get all, get by id, search, add, update, delete). Add/update/delete return all data for now.
 
 ## Run
 
@@ -18,23 +18,23 @@ The server runs on http://localhost:3000
 | Method | Controller function | URL | Returns |
 |---|---|---|---|
 | GET | – (`app.js`) | `/` | Home – project info and list of endpoints |
-| GET | `roomsController.getAllRooms` | `/api/rooms` | Array of all study rooms |
+| GET | `roomsController.getRooms` | `/api/rooms` | Array of all study rooms |
 | GET | `roomsController.getAvailableRooms` | `/api/rooms/available` | Rooms that are available right now |
-| GET | `roomsController.searchRooms` | `/api/rooms/search?name=&minCapacity=&buildingId=` | Rooms matching the search |
-| GET | `roomsController.getRoomById` | `/api/rooms/:id` | One room (or 404) |
-| POST | `roomsController.addRoom` | `/api/rooms` | Array of rooms after adding |
-| PUT | `roomsController.updateRoom` | `/api/rooms/:id` | Array of rooms after updating |
-| DELETE | `roomsController.deleteRoom` | `/api/rooms/:id` | Array of rooms after deleting |
-| GET | `buildingsController.getAllBuildings` | `/api/buildings` | Array of all campus buildings |
-| GET | `buildingsController.getBuildingsSummary` | `/api/buildings/summary` | Summary data about the buildings |
-| GET | `buildingsController.searchBuildings` | `/api/buildings/search?name=&location=` | Buildings matching the search |
-| GET | `buildingsController.getBuildingById` | `/api/buildings/:id` | One building (or 404) |
-| POST | `buildingsController.addBuilding` | `/api/buildings` | Array of buildings after adding |
-| PUT | `buildingsController.updateBuilding` | `/api/buildings/:id` | Array of buildings after updating |
-| DELETE | `buildingsController.deleteBuilding` | `/api/buildings/:id` | Array of buildings after deleting |
+| GET | `roomsController.filterRooms` | `/api/rooms/search?minCapacity=6` | Rooms with at least this capacity (all rooms if no query) |
+| GET | `roomsController.getById` | `/api/rooms/:id` | One room (or 404) |
+| POST | `roomsController.addRoom` | `/api/rooms` | Not implemented yet – returns all rooms |
+| PUT | `roomsController.updateRoom` | `/api/rooms/:id` | Not implemented yet – returns all rooms |
+| DELETE | `roomsController.deleteRoom` | `/api/rooms/:id` | Not implemented yet – returns all rooms |
+| GET | `buildingsController.getBuildings` | `/api/buildings` | Array of all campus buildings |
+| GET | `buildingsController.getSummary` | `/api/buildings/summary` | Summary data about the buildings |
+| GET | `buildingsController.filterBuildings` | `/api/buildings/search?location=North campus` | Buildings in this location (all buildings if no query) |
+| GET | `buildingsController.getById` | `/api/buildings/:id` | One building (or 404) |
+| POST | `buildingsController.addBuilding` | `/api/buildings` | Not implemented yet – returns all buildings |
+| PUT | `buildingsController.updateBuilding` | `/api/buildings/:id` | Not implemented yet – returns all buildings |
+| DELETE | `buildingsController.deleteBuilding` | `/api/buildings/:id` | Not implemented yet – returns all buildings |
 | any | – (`app.js`) | any other path | 404 error in JSON |
 
-> Data is kept in memory, so changes made with POST/PUT/DELETE reset when the server restarts.
+> Data is a static array in memory. POST/PUT/DELETE will be implemented with MySQL later in the course.
 
 ## Folder structure
 
@@ -46,6 +46,6 @@ studyspot-server/
 │   ├── rooms.js
 │   └── buildings.js
 └── controllers/
-    ├── roomsController.js
-    └── buildingsController.js
+    ├── rooms.js
+    └── buildings.js
 ```

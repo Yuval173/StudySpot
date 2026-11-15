@@ -1,13 +1,13 @@
 const express = require('express');
-const roomsController = require('../controllers/roomsController');
+const roomsController = require('../controllers/rooms');
 
 const router = express.Router();
 
-// Specific paths must come before '/:id'
-router.get('/', roomsController.getAllRooms);
+// '/search' and '/available' must come before '/:id'
+router.get('/', roomsController.getRooms);
 router.get('/available', roomsController.getAvailableRooms);
-router.get('/search', roomsController.searchRooms);
-router.get('/:id', roomsController.getRoomById);
+router.get('/search', roomsController.filterRooms);
+router.get('/:id', roomsController.getById);
 router.post('/', roomsController.addRoom);
 router.put('/:id', roomsController.updateRoom);
 router.delete('/:id', roomsController.deleteRoom);
