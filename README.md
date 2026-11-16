@@ -4,6 +4,12 @@ REST API for StudySpot, a web app for booking study rooms on campus.
 Exercise 1: Express server with two entities (Rooms, Buildings) returning static JSON.
 Exercise 2: Added controllers - each route calls a controller function (get all, get by id, search, add, update, delete). Add/update/delete return all data for now.
 
+## Team
+
+- Moshe Cohen
+- Yonatan Arad
+- Yuval Abudi
+
 ## Run
 
 ```bash
